@@ -12,7 +12,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 //cors config
 app.use(cors({
-  origin: 'https://debate-app-frontend-two.vercel.app/', // Replace with your Vercel frontend URL
+  origin: 'https://debate-app-frontend-ax42i0ycp-adwin54s-projects.vercel.app/', // Replace with your Vercel frontend URL
   methods: ['GET', 'POST'],
 }));
 
