@@ -7,14 +7,23 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 //cors config
 app.use(cors({
   origin: 'https://debate-app-frontend-ax42i0ycp-adwin54s-projects.vercel.app/', // Replace with your Vercel frontend URL
   methods: ['GET', 'POST'],
+  credentials: true,
 }));
+
+// Enable CORS for Socket.IO
+const io = new Server(server, {
+  cors: {
+    origin: 'https://debate-app-frontend-ax42i0ycp-adwin54s-projects.vercel.app', // Replace with your frontend URL
+    methods: ['GET', 'POST'],
+    credentials: true, // Allow credentials (if needed)
+  },
+});
 
 // Store active debates and users
 const debates = new Map();
