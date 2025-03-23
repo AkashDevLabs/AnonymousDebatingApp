@@ -1,5 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const corsOptions ={
+  origin:'https://debate-app-frontend-ax42i0ycp-adwin54s-projects.vercel.app/', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
 const http = require('http');
 const { Server } = require('socket.io');
 const OpenAI = require('openai');
