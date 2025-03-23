@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
 const OpenAI = require('openai');
@@ -8,6 +9,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+//cors config
+app.use(cors({
+  origin: 'https://debate-app-frontend-two.vercel.app/', // Replace with your Vercel frontend URL
+  methods: ['GET', 'POST'],
+}));
 
 // Store active debates and users
 const debates = new Map();
