@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
   socket.on('joinDebate', (roomId, role) => {
     socket.join(roomId);
     debates.set(roomId, { users: [...(debates.get(roomId)?.users || []), { id: socket.id, role }] });
-    io.to(roomId).emit('updateDebate', Array.from(debates.get(roomId).users);
+    io.to(roomId).emit('updateDebate', Array.from(debates.get(roomId).users));
   });
 
   // Send a message in the debate
